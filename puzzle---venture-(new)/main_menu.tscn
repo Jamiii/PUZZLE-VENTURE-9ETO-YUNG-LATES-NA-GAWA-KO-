@@ -1,0 +1,191 @@
+[gd_scene load_steps=19 format=3 uid="uid://df48vk0pv216n"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_1uw8u"]
+[ext_resource type="Texture2D" uid="uid://b5xqgjrp3unyv" path="res://sky - Copy.png" id="1_kr0p2"]
+[ext_resource type="Texture2D" uid="uid://dc3o8kgxy0vyi" path="res://462558696_958512109446641_6467335060046918815_n - Copy.png" id="2_g6388"]
+[ext_resource type="Texture2D" uid="uid://dwjyrkeix1cp5" path="res://462545996_2420934048115339_5582811573550447035_n - Copy.png" id="3_qotme"]
+[ext_resource type="Script" path="res://animation_player.gd" id="4_gu5p1"]
+[ext_resource type="Texture2D" uid="uid://3f6qe1sn77eo" path="res://stick - Copy.png" id="6_tu2dj"]
+[ext_resource type="Texture2D" uid="uid://bsr2vi0ktphl0" path="res://playbutton - Copy.png" id="7_05xjb"]
+[ext_resource type="Texture2D" uid="uid://c5fr2xi34ydop" path="res://settingsbutton.png" id="8_7uiuq"]
+[ext_resource type="Texture2D" uid="uid://d2pve6i6pvf43" path="res://exitbutton .png" id="9_qyt2u"]
+[ext_resource type="Texture2D" uid="uid://cttiuswce4lna" path="res://Remove background project (1).png" id="10_3uxye"]
+[ext_resource type="Texture2D" uid="uid://cv8exy3em8yxo" path="res://Remove background project.png" id="11_1q8nc"]
+
+[sub_resource type="Animation" id="Animation_eyf1r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-658, 107)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../4625586969585121094466416467335060046918815N-Copy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1528, 106)]
+}
+
+[sub_resource type="Animation" id="Animation_b8j0j"]
+resource_name = "for clouds"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-520, 107), Vector2(-295, 107), Vector2(-163, 147)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../4625586969585121094466416467335060046918815N-Copy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1528, 106), Vector2(1255, 205)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgt2t"]
+_data = {
+"RESET": SubResource("Animation_eyf1r"),
+"for clouds": SubResource("Animation_b8j0j")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh8kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i31ia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ahcw"]
+
+[sub_resource type="SystemFont" id="SystemFont_sv534"]
+font_names = PackedStringArray("Impact")
+
+[node name="MAIN MENU" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1uw8u")
+
+[node name="Sky-Copy" type="Sprite2D" parent="."]
+position = Vector2(577, 327)
+scale = Vector2(0.561279, 0.423828)
+texture = ExtResource("1_kr0p2")
+
+[node name="4625586969585121094466416467335060046918815N-Copy" type="Sprite2D" parent="."]
+position = Vector2(1528, 106)
+scale = Vector2(0.616211, 0.305664)
+texture = ExtResource("2_g6388")
+
+[node name="46254599624209340481153395582811573550447035N-Copy" type="Sprite2D" parent="."]
+position = Vector2(-658, 107)
+scale = Vector2(1, 0.539714)
+texture = ExtResource("3_qotme")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="46254599624209340481153395582811573550447035N-Copy"]
+libraries = {
+"": SubResource("AnimationLibrary_sgt2t")
+}
+script = ExtResource("4_gu5p1")
+
+[node name="Stick-Copy" type="Sprite2D" parent="."]
+position = Vector2(224, 538)
+rotation = -0.825145
+scale = Vector2(0.372105, 0.37087)
+texture = ExtResource("6_tu2dj")
+
+[node name="play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 53.0
+offset_right = 423.0
+offset_bottom = 298.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_bh8kl")
+action_mode = 0
+icon = ExtResource("7_05xjb")
+flat = true
+expand_icon = true
+
+[node name="settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 317.0
+offset_right = 309.0
+offset_bottom = 474.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_i31ia")
+action_mode = 0
+icon = ExtResource("8_7uiuq")
+flat = true
+expand_icon = true
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 479.0
+offset_right = 310.0
+offset_bottom = 634.0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_3ahcw")
+action_mode = 0
+icon = ExtResource("9_qyt2u")
+flat = true
+expand_icon = true
+
+[node name="RemoveBackgroundProject(1)" type="Sprite2D" parent="."]
+position = Vector2(917, 591)
+rotation = -0.127409
+scale = Vector2(0.530506, 0.474461)
+skew = 0.00872665
+texture = ExtResource("10_3uxye")
+
+[node name="RemoveBackgroundProject" type="Sprite2D" parent="."]
+position = Vector2(719, 446)
+scale = Vector2(0.495313, 0.369141)
+texture = ExtResource("11_1q8nc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 70.0
+offset_right = 1142.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.893441, 0.541699, 0.412999, 1)
+theme_override_colors/font_shadow_color = Color(0.47907, 0.296193, 0.207436, 1)
+theme_override_colors/font_outline_color = Color(0.412313, 0.242522, 0.0789326, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/shadow_offset_x = 9
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 26
+theme_override_constants/shadow_outline_size = 31
+theme_override_fonts/font = SubResource("SystemFont_sv534")
+theme_override_font_sizes/font_size = 86
+text = "PUZZLE - VENTURE!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+
+[connection signal="pressed" from="play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_button_3_pressed"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://8mcvidoljmp7"]
+
+[ext_resource type="Script" path="res://settings.gd" id="1_cncpn"]
+[ext_resource type="Texture2D" uid="uid://dr8wss2usm2k8" path="res://245beb04-9ce5-448f-b0bf-c03d1e659648.jpg" id="1_svjnr"]
+[ext_resource type="Texture2D" uid="uid://cv8exy3em8yxo" path="res://Remove background project.png" id="2_ib0nn"]
+[ext_resource type="Texture2D" uid="uid://yok4iitpfr03" path="res://backbutton.png" id="3_o2dad"]
+
+[sub_resource type="SystemFont" id="SystemFont_uxa5v"]
+font_names = PackedStringArray("Jokerman")
+
+[sub_resource type="SystemFont" id="SystemFont_8d5pq"]
+font_names = PackedStringArray("Jokerman")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t6jx"]
+
+[sub_resource type="SystemFont" id="SystemFont_s8tw5"]
+font_names = PackedStringArray("Impact")
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cncpn")
+
+[node name="245Beb04-9Ce5-448f-b0Bf-c03d1e659648" type="Sprite2D" parent="."]
+position = Vector2(575, 231)
+scale = Vector2(0.903125, 0.644531)
+texture = ExtResource("1_svjnr")
+
+[node name="surprise" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 142.0
+offset_bottom = 135.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.758221, 0.571739, 0.161322, 1)
+theme_override_colors/font_color = Color(0.870505, 0.549084, 0.341671, 1)
+theme_override_fonts/font = SubResource("SystemFont_uxa5v")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("3_o2dad")
+flat = true
+expand_icon = true
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 524.0
+offset_right = 1150.0
+offset_bottom = 652.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.812121, 0.551669, 0.214543, 1)
+theme_override_colors/font_color = Color(0.511355, 0.341161, 0.112556, 1)
+theme_override_fonts/font = SubResource("SystemFont_8d5pq")
+theme_override_font_sizes/font_size = 26
+theme_override_icons/icon = ExtResource("2_ib0nn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2t6jx")
+text = "CLICK ME!"
+icon = ExtResource("2_ib0nn")
+flat = true
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 21.0
+offset_right = 814.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0.90718, 0.503174, 0.275745, 1)
+theme_override_colors/font_shadow_color = Color(0.335532, 0.155228, 0.0458018, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 40
+theme_override_constants/shadow_offset_y = 50
+theme_override_constants/outline_size = 70
+theme_override_constants/shadow_outline_size = 60
+theme_override_fonts/font = SubResource("SystemFont_s8tw5")
+theme_override_font_sizes/font_size = 136
+text = "SETTINGS 
+"
+
+[connection signal="pressed" from="surprise" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_game_creators_pressed"]

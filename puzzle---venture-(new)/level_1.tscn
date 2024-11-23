@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4onfh2808hnv"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_cc4gs"]
+[ext_resource type="Texture2D" uid="uid://b5xqgjrp3unyv" path="res://sky - Copy.png" id="1_md42a"]
+[ext_resource type="Texture2D" uid="uid://dc3o8kgxy0vyi" path="res://462558696_958512109446641_6467335060046918815_n - Copy.png" id="2_s3ohi"]
+[ext_resource type="Texture2D" uid="uid://jkgerb5rpv15" path="res://Remove background project (3).png" id="3_0wp8c"]
+[ext_resource type="Texture2D" uid="uid://yok4iitpfr03" path="res://backbutton.png" id="5_rergm"]
+
+[sub_resource type="Animation" id="Animation_47v87"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cloud right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2160.34, 77.4453)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../4625586969585121094466416467335060046918815N-Copy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(543, -19)]
+}
+
+[sub_resource type="Animation" id="Animation_c4rhf"]
+resource_name = "animation lvl 1 clouds"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cloud right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2160.34, 77.4453), Vector2(2996.39, 77.4453)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../4625586969585121094466416467335060046918815N-Copy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(543, -19), Vector2(722, 158)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3em75"]
+_data = {
+"RESET": SubResource("Animation_47v87"),
+"animation lvl 1 clouds": SubResource("Animation_c4rhf")
+}
+
+[node name="LEVEL 1" type="Node2D"]
+script = ExtResource("1_cc4gs")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(578, 324.5)
+scale = Vector2(0.567383, 0.42513)
+texture = ExtResource("1_md42a")
+
+[node name="4625586969585121094466416467335060046918815N-Copy" type="Sprite2D" parent="."]
+position = Vector2(543, -19)
+scale = Vector2(0.289551, 0.156901)
+texture = ExtResource("2_s3ohi")
+
+[node name="mountain" type="Sprite2D" parent="."]
+position = Vector2(578.002, 488.999)
+scale = Vector2(0.574952, 0.319335)
+texture = ExtResource("3_0wp8c")
+
+[node name="cloud left" type="Sprite2D" parent="."]
+position = Vector2(65, 148)
+scale = Vector2(0.462891, 0.309896)
+texture = ExtResource("2_s3ohi")
+
+[node name="cloud right" type="Sprite2D" parent="cloud left"]
+position = Vector2(2160.34, 77.4453)
+scale = Vector2(1.36709, 1.0105)
+texture = ExtResource("2_s3ohi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cloud left"]
+libraries = {
+"": SubResource("AnimationLibrary_3em75")
+}
+
+[node name="Button" type="Button" parent="cloud left"]
+offset_left = -162.0
+offset_top = -487.0
+offset_right = 172.0
+offset_bottom = -61.0
+icon = ExtResource("5_rergm")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="cloud left/Button" to="." method="_on_button_pressed"]

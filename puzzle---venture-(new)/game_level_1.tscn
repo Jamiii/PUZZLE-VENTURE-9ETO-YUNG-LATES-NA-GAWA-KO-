@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d27bkicvvx2lt"]
+
+[ext_resource type="Script" path="res://game_level_1.gd" id="1_qftve"]
+
+[node name="game level 1" type="Node2D"]
+script = ExtResource("1_qftve")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://cs8b1x48fmav1"]
+
+[ext_resource type="Texture2D" uid="uid://b5xqgjrp3unyv" path="res://sky - Copy.png" id="1_4l4i0"]
+[ext_resource type="Script" path="res://control.gd" id="1_b2r62"]
+[ext_resource type="Script" path="res://dialogue 1.gd" id="2_ey8rt"]
+
+[sub_resource type="SystemFont" id="SystemFont_e5qkn"]
+font_names = PackedStringArray("Rockwell")
+
+[sub_resource type="Animation" id="Animation_jg2h0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ymxfb"]
+resource_name = "dialogue1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xug4u"]
+_data = {
+"RESET": SubResource("Animation_jg2h0"),
+"dialogue1": SubResource("Animation_ymxfb")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_4ct51"]
+font_names = PackedStringArray("Jokerman")
+
+[node name="opening dialogue lvl 1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2r62")
+
+[node name="Sky-Copy" type="Sprite2D" parent="."]
+position = Vector2(575.5, 329)
+scale = Vector2(0.563965, 0.417969)
+texture = ExtResource("1_4l4i0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 30.0
+offset_right = 1052.0
+offset_bottom = 625.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_e5qkn")
+theme_override_font_sizes/bold_italics_font_size = 1
+theme_override_font_sizes/normal_font_size = 29
+text = "Andy opened his eyes, groaning as he sat up.
+
+He looked around the place he was currently in.\"Where am I?\" He murmured to himself.
+
+The poor cat was lost, in his mind and in literal sense.
+
+\"Oh right... I got sucked in the game.\"
+
+He stood up.
+
+\"Reminds me of that one movie.... Jumanji, was it?\"
+
+He shook his head, he had this determined look on his face.
+
+\"I should focus on finding Ava.\""
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RichTextLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_xug4u")
+}
+script = ExtResource("2_ey8rt")
+
+[node name="skip" type="Button" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 547.0
+offset_right = 1192.0
+offset_bottom = 664.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.804326, 0.521056, 0.325974, 1)
+theme_override_fonts/font = SubResource("SystemFont_4ct51")
+theme_override_font_sizes/font_size = 71
+text = "SKIP "
+flat = true
+
+[connection signal="pressed" from="skip" to="." method="_on_button_pressed"]

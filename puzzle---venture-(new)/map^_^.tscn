@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://podx85nd6dbg"]
+
+[ext_resource type="Script" path="res://map^_^.gd" id="1_650l7"]
+[ext_resource type="Texture2D" uid="uid://dr8wss2usm2k8" path="res://245beb04-9ce5-448f-b0bf-c03d1e659648.jpg" id="1_wstmv"]
+[ext_resource type="Texture2D" uid="uid://yok4iitpfr03" path="res://backbutton.png" id="2_oi8u5"]
+[ext_resource type="Texture2D" uid="uid://iasql7o4bxwf" path="res://Untitled252_20241115065210.png" id="4_ct5yw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ddnv"]
+
+[sub_resource type="SystemFont" id="SystemFont_qo4in"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iquq"]
+
+[node name="map^-^" type="Node2D"]
+script = ExtResource("1_650l7")
+
+[node name="map pic" type="Sprite2D" parent="."]
+position = Vector2(578, 326)
+scale = Vector2(0.896875, 0.503125)
+texture = ExtResource("1_wstmv")
+
+[node name="Button" type="Button" parent="map pic"]
+offset_left = -644.46
+offset_top = -634.037
+offset_right = -428.46
+offset_bottom = -366.037
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ddnv")
+action_mode = 0
+icon = ExtResource("2_oi8u5")
+flat = true
+expand_icon = true
+
+[node name="Untitled25220241115065210" type="Sprite2D" parent="map pic"]
+position = Vector2(8.91984, 31.8013)
+scale = Vector2(0.50588, 0.805124)
+texture = ExtResource("4_ct5yw")
+
+[node name="mountain level 1" type="Button" parent="."]
+offset_left = 229.0
+offset_top = 114.0
+offset_right = 413.0
+offset_bottom = 255.0
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.465433, 0.807019, 0.975221, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_qo4in")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/hover = SubResource("StyleBoxFlat_3iquq")
+text = "LEVEL 1"
+flat = true
+
+[connection signal="pressed" from="map pic/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="mountain level 1" to="." method="_on_mountain_level_1_pressed"]
